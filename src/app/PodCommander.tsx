@@ -6,29 +6,36 @@ import VolumeTab from './components/VolumeTab';
 import NetworkTab from './components/NetworkTab';
 
 export default function PodCommander() {
-  const [tab, setTab] = useState<Tab>('containers');
-  let Content;
+    const [tab, setTab] = useState<Tab>('containers');
+    let Content;
 
-  switch (tab) {
-    case 'images':
-      Content = <ImageTab />;
-      break;
-    case 'volumes':
-      Content = <VolumeTab />;
-      break;
-    case 'networks':
-      Content = <NetworkTab />;
-      break;
-    default:
-      Content = <ContainerTab />;
-  }
+    switch (tab) {
+        case 'images':
+            Content = <ImageTab />;
+            break;
+        case 'volumes':
+            Content = <VolumeTab />;
+            break;
+        case 'networks':
+            Content = <NetworkTab />;
+            break;
+        default:
+            Content = <ContainerTab />;
+    }
 
-  return (
-    <div style={{ display: 'flex', height: '100vh' }}>
-      <Sidebar active={tab} onSelect={setTab} />
-      <main style={{ flex: 1, padding: 16 }}>
-        {Content}
-      </main>
-    </div>
-  );
+    return (
+        <div style={{ display: 'flex', flex: 1, width: '100vw', height: '100vh', boxSizing: 'border-box' }}>
+            <Sidebar active={tab} onSelect={setTab} />
+            <div
+                style={{
+                    background: '#f4f4f9',
+                    overflowY: 'auto',
+                    flex: 1,
+                    width: '100%',
+                }}
+            >
+                {Content}
+            </div>
+        </div>
+    );
 }

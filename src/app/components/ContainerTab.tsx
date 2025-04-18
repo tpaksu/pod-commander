@@ -28,22 +28,22 @@ export default function ContainerTab() {
             {containers.length === 0 ? (
                 <p>No containers found</p>
             ) : (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
-                    {containers.map((container) => (
-                        <div
-                            key={container.Id}
-                            style={{
-                                background: '#fff',
-                                borderRadius: '8px',
-                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                                padding: '1rem',
-                            }}
-                        >
-                            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#1e1e2f' }}>{container.Names?.[0]?.substring(1) || container.Id.substring(0, 12)}</h3>
-                            <p style={{ margin: '0.5rem 0', color: '#666' }}>Status: {container.Status}</p>
-                        </div>
-                    ))}
-                </div>
+                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                    <thead>
+                        <tr>
+                            <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Name</th>
+                            <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {containers.map((container) => (
+                            <tr key={container.Id}>
+                                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{container.Names?.[0]?.substring(1) || container.Id.substring(0, 12)}</td>
+                                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{container.Status}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             )}
         </div>
     );

@@ -28,22 +28,22 @@ export default function ImageTab() {
             {images.length === 0 ? (
                 <p>No images found</p>
             ) : (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
-                    {images.map((image) => (
-                        <div
-                            key={image.Id}
-                            style={{
-                                background: '#fff',
-                                borderRadius: '8px',
-                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                                padding: '1rem',
-                            }}
-                        >
-                            <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#1e1e2f' }}>{image.RepoTags?.join(', ') || '<none>'}</h3>
-                            <p style={{ margin: '0.5rem 0', color: '#666' }}>Size: {(image.Size / 1e6).toFixed(1)} MB</p>
-                        </div>
-                    ))}
-                </div>
+                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                    <thead>
+                        <tr>
+                            <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Repository</th>
+                            <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'left' }}>Size (MB)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {images.map((image) => (
+                            <tr key={image.Id}>
+                                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{image.RepoTags?.join(', ') || '<none>'}</td>
+                                <td style={{ border: '1px solid #ddd', padding: '8px' }}>{(image.Size / 1e6).toFixed(1)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             )}
         </div>
     );
