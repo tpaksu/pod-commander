@@ -19,14 +19,14 @@ export default function Sidebar({ active, onSelect }: Props) {
     return (
         <nav
             style={{
-                width: 250,
+                width: 150,
                 background: '#DDEAF6',
                 color: '#fff',
                 padding: '1rem',
             }}
         >
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <img src='/assets/logo.png' alt='Logo' style={{ width: '80%', marginBottom: -30, marginTop: -20 }} />
+                <img src='/assets/logo.png' alt='Logo' style={{ width: '100%', margin: -20 }} />
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {tabs.map(({ id, label, icon }) => (
